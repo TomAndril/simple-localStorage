@@ -1,5 +1,5 @@
 // se crean variables que toman los valores del nombre y DNI y toma la lista de alumnos desde el localStorage
-
+var parsedAlumnos =  JSON.parse(localStorage.getItem("Alumno"));
 var botonAgregar = document.getElementById('botonAgregar');
 var botonEliminar = document.getElementById('botonEliminar')
 var nombre = document.getElementById('nombreAlumno');
@@ -75,8 +75,14 @@ botonValidator()
 
 // Funcion que encuentra coincidencias con los valores DNI del localStorage y un input field. En caso de encontrar coincidencia, devuelve true
 
-function buscarAlumnoPorDni(dniToSearch) {
-    var index = JSON.parse(listaAlumnos)
+function buscarAlumnoPorDni(dniToSearch, parsedAlumnos) {
+
+    var index = parsedAlumnos
+    if (index == null) { // en caso de no haber econtrado ningun alumno en localStorage el boton es validado
+        dni.classList.add('is-valid')
+        dni.classList.remove('is-invalid')
+        botonValidator()    
+    }
     for (let i = 0; i < index.length; i++) {
         var element = index[i];
         if (dniToSearch === element.dni) {
@@ -85,10 +91,13 @@ function buscarAlumnoPorDni(dniToSearch) {
     }
 }
 
+
+
 // esta funcion valida que el campo de dni coincida con un DNI almacenado en local storage y en caso de encontrar coincidencia habilita el boton de borrar
 
 function eliminarValidator(event) {
     var inputNode = event.target;
+    console.log(inputNode.value)
     if (buscarAlumnoPorDni(inputNode.value) === true) {
         eliminar.classList.remove('is-invalid')
         eliminar.classList.add('is-valid')
@@ -143,7 +152,6 @@ mostrarAlumnosExistentes()
 
 function nuevoAlumno() {
     
-    var nodoLista = document.getElementById('mainList')
     var parsedAlumnos = JSON.parse(localStorage.getItem("Alumno"));
 
     if (parsedAlumnos == null) parsedAlumnos = []; // en caso de no encontrar nada dentro del localStorage se crea un array de datos 
@@ -221,3 +229,12 @@ function eliminarAlumno() {
 }
 
 botonEliminar.onclick = eliminarAlumno
+
+// Funciones varias de jQuery
+
+$('.list-group-item').hover(function () {
+    $(this).addClass('active');        
+    }, function () {
+    $(this).removeClass('active');
+    }
+);

@@ -25,25 +25,40 @@
                     <div class="form-row form-group">
                         <div class="col">
                             <input type="text" class="form-control" id="nombreAlumno" placeholder="Nombre">
+                            <div class="invalid-feedback">
+                                El nombre no puede contener numeros ni estar vacio
+                              </div>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="apellidoAlumno" placeholder="Apellido">
+                            <div class="invalid-feedback">
+                                El apellido no puede contener numeros ni estar vacio
+                              </div>
                         </div>
                     </div>
                     <div class="form-row form-group">
                         <div class="col">
                             <input type="number" class="form-control" placeholder="DNI" id="dniAlumno">
+                            <div class="invalid-feedback">
+                                El numero de DNI no puede coincidir con el DNI de otro alumno, ni estar vacio y no puede ser un numero negativo
+                              </div>
                         </div>
                         <div class="col">
                             <input type="email" class="form-control" id="emailAlumno" placeholder="Email">
+                            <div class="invalid-feedback">
+                                El email no debe estar vacio y debe contener un "@" y un "."
+                              </div>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-block form-group" id="botonAgregar" disabled>Agregar Alumno</button>
+                    <button type="button" class="btn btn-primary btn-block form-group" id="botonAgregar" disabled >Agregar Alumno</button>
 
                     <div class="form-row form-group">
                         <div class="col">
                             <input type="number" class="form-control" placeholder="DNI" id="eliminarAlumno">
+                            <div class="invalid-feedback">
+                                El numero de DNI debe coincidir con el DNI de algun alumno y el campo no puede estar vacio
+                              </div>
                         </div>
                         <div class="col">
                             <button type="button" class="btn btn-danger btn-block" id="botonEliminar" disabled>Eliminar Alumno</button>
@@ -52,29 +67,35 @@
 
                     <div class="form-row form-group">
                         <div class="col">
-                            <input type="number" class="form-control" placeholder="DNI">
+                            <input type="text" class="form-control" placeholder="Nombre" id="buscarAlumno">
+                            <div class="invalid-feedback">
+                                   Debe ingresar solamente nombres (apellido no)
+                                  </div>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-success btn-block">Buscar Alumno</button>
+                            <button type="button" class="btn btn-success btn-block" id="botonBuscar" disabled>Buscar Alumno</button>
                         </div>
                     </div>
                 </form>
+                <div class="col">
+                    <ul id="searchList" class="list-group">
+                        
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
 
-    <script src="./js/scripts.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+  crossorigin="anonymous"></script>
+
+    <script src="./js/script.js"></script>
 
     <!-- Scripts Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+   
     </script>
 </body>
 
