@@ -248,10 +248,22 @@ function deleteStudentByDni(input, index) {
 }
 
 $(deleteButton).click(function () {
-    deleteStudentByDni(studentListParentNode, 'Student')
-    $(deleteStudentInput).removeClass('is-valid');
-    $(deleteStudentInput).val('');
-    $(deleteButton).attr('disabled', true);
+    $.confirm({
+        theme: 'modern',
+        title: 'Eliminar alumno',
+        content: 'Esta seguro de que desea eliminar a este alumno?',
+        buttons: {
+            confirmar: function () {
+                deleteStudentByDni(studentListParentNode, 'Student')
+                $(deleteStudentInput).removeClass('is-valid');
+                $(deleteStudentInput).val('');
+                $(deleteButton).attr('disabled', true);
+            },
+            cancelar: function () {
+                $.alert('Cancelado');
+            }
+        }
+    });
 });
 
 ///////////////////
@@ -284,8 +296,7 @@ $(searchButton).click(function () {
 ////////////////////////
 
 $(".list-group-item").hover(function () {
-        $(this).addClass('active');
-    }, function () {
-        $(this).removeClass('active');
-    }
-);
+    $(this).addClass('active');
+}, function () {
+    $(this).removeClass('active');
+});
